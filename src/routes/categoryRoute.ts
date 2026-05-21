@@ -5,8 +5,8 @@ import {
     showCategories, 
     updateCategories, 
     deleteCategories 
-} from "../controllers/categoryController";
-import { checkAdmin } from "../middlewares/logger"; 
+} from "../controllers/categoryController.js";
+import { checkAdmin } from "../middlewares/logger.js"; 
 
 const router = express.Router();
 
