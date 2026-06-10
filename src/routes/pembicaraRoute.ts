@@ -1,18 +1,19 @@
 import express from "express";
-import { 
-    getPembicara, 
-    createPembicara, 
-    showPembicara, 
-    updatePembicara, // <-- PASTIKAN INI SUDAH DITULIS DI SINI
-    deletePembicara 
+import {
+    getPembicara,
+    showPembicara,
+    createPembicara,
+    updatePembicara,
+    deletePembicara,
 } from "../controllers/pembicaraController.js";
+import { authenticate } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
 router.get("/", getPembicara);
-router.post("/", createPembicara);
 router.get("/:id", showPembicara);
-router.put("/:id", updatePembicara); // Jalur PUT yang bikin error tadi
-router.delete("/:id", deletePembicara);
+router.post("/", authenticate, createPembicara);
+router.put("/:id", authenticate, updatePembicara);
+router.delete("/:id", authenticate, deletePembicara);
 
 export default router;
